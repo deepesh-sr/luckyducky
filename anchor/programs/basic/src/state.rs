@@ -13,7 +13,17 @@ pub struct Lottery {
 
 #[account]
 #[derive(InitSpace)]
-pub struct Participant{
+pub struct VaultState{
+    pub state_bump : u8,
+    pub vault_bump : u8
+}
+
+#[account]
+pub struct RewardVault{}
+
+#[account]
+#[derive(InitSpace)]
+pub struct ParticipantTicket{
     pub lottery : Pubkey,
     pub participant_pubkey : Pubkey,
 }
