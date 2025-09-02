@@ -27,6 +27,13 @@ pub fn participate(ctx : Context<Participate>)->Result<()>{
     Ok(())
 }
 
+pub fn verify_address(ctx : Context<Participate>)->Result<()>{
+    msg!("{}",ctx.accounts.reward_vault.key());
+    msg!("{}",ctx.accounts.vault_state.state_bump);
+    msg!("{}",ctx.accounts.vault_state.vault_bump);
+Ok(())
+}
+
 
 #[derive(Accounts)]
 pub struct Participate<'info>{
