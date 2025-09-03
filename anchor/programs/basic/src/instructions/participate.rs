@@ -14,6 +14,8 @@ pub fn participate(ctx : Context<Participate>)->Result<()>{
         TicketRegistryError::AllTicketsSoldOut
     );
 
+    require!(lottery.name.len() < 100,TicketRegistryError::NameTooLong);
+
     let cpi = CpiContext::new(system_program.to_account_info(), system_program::Transfer{
         from : participant.to_account_info(),
         to : ctx.accounts.reward_vault.to_account_info()
@@ -26,14 +28,6 @@ pub fn participate(ctx : Context<Participate>)->Result<()>{
     
     Ok(())
 }
-
-pub fn verify_address(ctx : Context<Participate>)->Result<()>{
-    msg!("{}",ctx.accounts.reward_vault.key());
-    msg!("{}",ctx.accounts.vault_state.state_bump);
-    msg!("{}",ctx.accounts.vault_state.vault_bump);
-Ok(())
-}
-
 
 #[derive(Accounts)]
 pub struct Participate<'info>{
