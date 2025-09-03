@@ -10,9 +10,7 @@ declare_id!("JAVuBXeBZqXNtS73azhBDAoYaaAFfo4gWXoZe2e7Jf8H");
 
 #[program]
 pub mod basic {
-    use anchor_lang::context;
-
-    use crate::instructions::Initialize;
+    use crate::instructions::{Initialize, Participate, Distribute};
 
     use super::*;
     
@@ -20,7 +18,11 @@ pub mod basic {
         initialize(ctx,name, organizer, ticket_price, max_participant)
     }
 
-    pub fn participate(ctx : Context<Participate>)->Result<()>{
-        participate(ctx)
+    pub fn participate(ctx: Context<Participate>) -> Result<()> {
+        instructions::participate(ctx)
+    }
+
+    pub fn distribute_prize(ctx: Context<Distribute>) -> Result<()> {
+        instructions::distribute_prize(ctx)
     }
 }

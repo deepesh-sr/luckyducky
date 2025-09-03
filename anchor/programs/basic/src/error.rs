@@ -12,4 +12,6 @@ pub enum TicketRegistryError {
     AvailableTicketsTooLow,
     #[msg("All tickets sold out")]
     AllTicketsSoldOut,
+    #[msg("Insufficient funds in vault")]
+    InsufficientFunds,
 }
