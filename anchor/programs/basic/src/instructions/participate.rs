@@ -25,7 +25,7 @@ pub fn participate(ctx : Context<Participate>)->Result<()>{
 
     participant_ticket.lottery = lottery.key();
     participant_ticket.participant_pubkey = participant.key();
-    
+
     Ok(())
 }
 
